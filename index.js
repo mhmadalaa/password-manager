@@ -1,40 +1,23 @@
 require('dotenv').config();
 
-const path = require('path');
 const morgan = require('morgan');
 const express = require('express');
 const mongoose = require('mongoose');
 
 const userRouter = require('./routers/userRouter');
 const passwordRouter = require('./routers/passwordRouter');
-const viewsRouter =require('./routers/viewsRouter');
 
 const app = express();
 
-// allow express accept json format data
+// allow express to accept json format data
 app.use(express.json());
-
-// serve files in 'public' folder without routing
-app.use(express.static('./public'));
 
 // HTTP request logger
 app.use(morgan('dev'));
 
-// Templates configurations
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// FIXME: TESTING ROUTER
-// const testRouter = require('./routers/testRouter');
-// app.use('/test', testRouter); 
-
 // ROUTERS
 app.use('/passwords', passwordRouter);
 app.use('/users', userRouter);
-
-
-//Views
-app.use('/' ,viewsRouter);
 
 // DB connection URI
 const DB = process.env.DATABASE.replace(
