@@ -19,6 +19,11 @@ app.use(morgan('dev'));
 app.use('/passwords', passwordRouter);
 app.use('/users', userRouter);
 
+app.get('/', (req, res) => {
+  // This code will be executed when a GET request is made to the base URL
+  res.send('<center><h1>welcome to password manager api</h1></center>');
+});
+
 // DB connection URI
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
