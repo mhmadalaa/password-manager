@@ -1,8 +1,4 @@
-# Password Manager
-
-Welcome to Password-Manager, a RESTful API to store your passwords safely and smoothly.
-
-## Badges
+<h1 align="center">🔐 Password Manager</h1>
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
@@ -15,7 +11,7 @@ Welcome to Password-Manager, a RESTful API to store your passwords safely and sm
 
 ## About
 
-This Password-Manager REST API allows users to securely store and manage their passwords in a centralized database. With this API, users can create, update, delete, and retrieve their password records using HTTP methods. It provides a convenient and secure way to organize and access sensitive information.
+This Password-Manager REST API allows users to securely store and manage their passwords in a centralized database. With this API, users can create, update, delete, and retrieve their password records using HTTP methods. It provides a convenient and secure way to organize and access sensitive information. 
 
 ## Tech/Framework used
 
@@ -28,7 +24,7 @@ This Password-Manager REST API allows users to securely store and manage their p
 - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 - [Postman](https://www.postman.com/)
 - [VSCode](https://code.visualstudio.com/)
-- [Mailtrap](https://mailtrap.io/)
+- [Brevo](https://www.brevo.com/)
 - [Vercel](https://vercel.com/)
 
 ## Getting Started
@@ -68,8 +64,8 @@ To install the Password-Manager, follow these steps:
    `PORT=`\
    `DATABASE=`\
    `DATABASE_PASSWORD=`\
-   `SECRET_KEY=` jwt secrete key\
-   `EXPIRE_IN=` jwt expired date\
+   `SECRET_KEY=` \
+   `EXPIRE_IN=` \
    `JWT_COOKIE_EXPIRES_IN=`\
    `EMAIL_USERNAME=`\
    `EMAIL_PASSWORD=`\
