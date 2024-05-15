@@ -37,24 +37,20 @@ exports.signup = async (req, res) => {
     newUser.authenticated = false;
 
     // Generate random confirm token
-    const confirmToken = newUser.createEmailConfirmToken();
+    const token = newUser.createEmailConfirmToken();
     newUser.save({ validateBeforeSave: false });
 
     // Send confirm token to user email
     try {
       await sendEmail({
-        email: 'mhmadalaa666@gmail.com',
+        email: req.body.email,
         subject: 'Email Confirm',
-        message: `That's a 10 minutes valid token ${confirmToken} to Confirm your Email`,
+        message: `That's a 10 minutes valid token ${token} to confirm your signup`,
       });
 
       res.status(200).json({
         status: 'success',
         message: 'An email will be send to complete the steps',
-        // FIXME: the confirm token shouldn't be returned to the client with the response
-        // it must be returned in a trusted place which the correct user have access to
-        // aka the `email`
-        confirmToken,
       });
     } catch (err) {
       await userModel.findByIdAndDelete(newUser._id);
@@ -228,7 +224,7 @@ exports.forgetPassword = async (req, res, next) => {
   // Send reset token to user's email
   try {
     await sendEmail({
-      email: 'mhmadalaa666@gmail.com',
+      email: user.email,
       subject: 'Password Reset',
       message: `That's a 10 minutes valid token ${resetToken} copy it to change your password`,
     });
@@ -236,10 +232,6 @@ exports.forgetPassword = async (req, res, next) => {
     res.status(200).json({
       status: 'success',
       message: 'An email will be send to complete the steps',
-      // FIXME: the reset token shouldn't be returned to the client with the response
-      // it must be returned in a trusted place which the correct user have access to
-      // aka the `email`
-      resetToken,
     });
   } catch (err) {
     user.passwordResetToken = undefined;
@@ -300,7 +292,7 @@ exports.changeEmail = async (req, res, next) => {
   // Send reset token to user's email
   try {
     await sendEmail({
-      email: 'mhmadalaa666@gmail.com',
+      email: user.email,
       subject: 'Email Reset',
       message: `That's a 10 minutes valid token ${resetToken} copy it to change your Email`,
     });
@@ -308,10 +300,6 @@ exports.changeEmail = async (req, res, next) => {
     res.status(200).json({
       status: 'success',
       message: 'An email will be send to complete the steps',
-      // FIXME: the reset token shouldn't be returned to the client with the response
-      // it must be returned in a trusted place which the correct user have access to
-      // aka the `email`
-      resetToken,
     });
   } catch (err) {
     user.emailResetToken = undefined;

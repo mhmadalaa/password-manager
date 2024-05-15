@@ -9,6 +9,7 @@ node_modules
 # MANAGE WORKFLOW
 makefile
 todo
+todo.txt
 
 # TEMPORARY CODE
 trashcode

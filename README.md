@@ -98,5 +98,5 @@ Password-Manager provides a RESTful API to performe various actions. You can fin
 ## To Do
 
 - [ ] make a more-secure login approach
-- [ ] replace mail transporter with real one
+- [x] replace mail transporter with real one
 - [ ] set password generator
