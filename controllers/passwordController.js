@@ -92,3 +92,28 @@ exports.updatePassword = async (req, res) => {
     });
   }
 };
+
+exports.suggestPassword = async (req, res) => {
+  try {
+    const length = Math.min(100, req.query.length * 1 || 15); //password length
+    const password = Array(length)
+      .fill(
+        '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      )
+      .map(function (x) {
+        const pwd = Math.floor(Math.random() * x.length);
+        return x.substring(pwd, pwd + 1);
+      })
+      .join('');
+
+    res.status(200).json({
+      status: 'success',
+      password,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+};
