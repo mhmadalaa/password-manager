@@ -6,6 +6,8 @@ const authController = require('./../controllers/authControllers');
 
 router.use(authController.isLogin);
 
+router.route('/suggest-password').get(passwordController.suggestPassword);
+
 router
   .route('/')
   .get(passwordController.getAllPasswords)
